@@ -1,15 +1,14 @@
-module Robot
 
-class Manipulator
+class RobotScript
 
+  def initialize(name, socket)
 
-
-  def initialize()
-
-    @pre = "def %{name}():\n" % {name:name}
+    @name = name
+    @s = socket
+    @pre = "def %{name}():\n" % {name: name}
     @script = ""
     @post = "end\n"
-    @loaded = False
+    @loaded = false
 
   end
 
@@ -70,15 +69,15 @@ class Manipulator
 
   def add_sleep(s)
 
-    cmd = " sleep(%{s})" % {s: s}
+    cmd = " sleep(%{s})\n" % {s: s}
     @script += cmd
 
   end
 
   def send_script(socket, script)
 
-    socket.send(script)
-    @script += cmd
+    socket.send(script,0)
+
 
   end
 
@@ -92,7 +91,7 @@ class Manipulator
 
   def home_position(program)
 
-    program.add_movel([0.0, -0.160, 0.450, -1, -3.14, 0], 2, 2, 2, 0.0)
+    program.add_movel([0.0, -0.160, 0.450, 0, -3.14, 0], 2, 2, 2, 0.0)
     program.add_sleep(1)
 
   end
@@ -106,7 +105,5 @@ class Manipulator
       @script = ""
 
   end
-
-end
 
 end
