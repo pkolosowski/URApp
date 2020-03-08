@@ -1,9 +1,6 @@
 
 class RobotScript
 
-
-  attr_accessor :script
-
   def initialize(name, socket)
 
     @name = name
@@ -51,28 +48,28 @@ class RobotScript
 
   def add_movel(p, v, a, t, b)
 
-    cmd = "  movel(p%{p}, %{a}, %{v}, %{t}, %{b})\n" % {p:p , v:v, a: a, t: t, b: b}
+    cmd = " movel(p%{p}, %{a}, %{v}, %{t}, %{b})\n" % {p:p , v:v, a: a, t: t, b: b}
     @script += cmd
 
   end
 
   def add_movej(p, a, v, t, b)
 
-    cmd = "  movej(p%{p}, %{a}, %{v}, %{t}, %{b})\n" % {p:p , v:v, a: a, t: t, b: b}
+    cmd = " movej(p%{p}, %{a}, %{v}, %{t}, %{b})\n" % {p:p , v:v, a: a, t: t, b: b}
     @script += cmd
 
   end
 
   def add_digital_out(x)
 
-    cmd = "  set_digital_out(7,%{x})\n" % {x: x}
+    cmd = " set_digital_out(7,%{x})\n" % {x: x}
     @script += cmd
 
   end
 
   def add_sleep(s)
 
-    cmd = "  sleep(%{s})\n" % {s: s}
+    cmd = " sleep(%{s})\n" % {s: s}
     @script += cmd
 
   end
